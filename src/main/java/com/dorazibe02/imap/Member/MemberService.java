@@ -74,6 +74,7 @@ public class MemberService {
             memberRepository.delete(member);
         });
 
+
         // 4. Auth 정보 삭제
         authRepository.findById(userId).ifPresent(authRepository::delete);
 
