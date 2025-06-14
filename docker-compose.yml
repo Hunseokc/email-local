@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: capstone-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-db
+      - redis-cache
+    env_file:
+      - .env.example
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: capstone-postgres
+    environment:
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+      - POSTGRES_DB=mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  # Redis 캐시 서비스
+  redis-cache:
+    image: redis:8-alpine
+    container_name: capstone-redis
+    command: redis-server --requirepass mypassword
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  postgres-data:
+  redis-data:
