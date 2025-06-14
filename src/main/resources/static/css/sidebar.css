@@ -1,0 +1,65 @@
+/* 좌측 Nav Bar 스타일 */
+.sidebar {
+    width: 250px; /* Nav 바 너비 */
+    background-color: #0d6efd; /* 보라색 계열 */
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 로그아웃 버튼 하단 정렬 */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    position: fixed; /* 고정된 위치 */
+    height: 100vh; /* 화면 전체 높이 */
+    left: 0;
+    top: 0;
+    z-index: 1000; /* 다른 요소 위에 표시 */
+}
+.sidebar-header {
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar-menu li {
+    margin-bottom: 10px;
+}
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* 호버 애니메이션 */
+}
+.sidebar-menu a i {
+    margin-right: 15px;
+    font-size: 1.25rem;
+}
+.sidebar-menu a:hover {
+    background-color: #a0c6ff; /* 호버 시 색상 변경 */
+    transform: translateX(5px); /* 호버 시 살짝 이동 */
+}
+.sidebar-footer {
+    padding-top: 20px;
+}
+.sidebar-footer a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+.sidebar-footer a:hover {
+    background-color: #6cd3ff;
+}

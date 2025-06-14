@@ -1,0 +1,215 @@
+/* 대시보드 전반적인 스타일 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5; /* 연한 보라색 배경 */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox 사용하여 레이아웃 관리 */
+    min-height: 100vh;
+}
+
+/* 메인 콘텐츠 영역 */
+.main-content {
+    margin-left: 250px; /* Nav 바 너비만큼 마진 */
+    flex-grow: 1; /* 남은 공간을 모두 차지 */
+    padding: 20px;
+    background-color: #f8f8f8; /* 배경색 */
+    min-height: 100vh;
+}
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px 25px;
+}
+.main-header .welcome-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+.main-header .user-info {
+    font-size: 1.1rem;
+    color: #555;
+}
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 반응형 그리드 */
+    gap: 20px; /* 그리드 간격 */
+}
+.dashboard-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+.dashboard-card .card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* 로그인 로그아웃 */
+.login-card {
+    max-width: 400px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    text-align: center;
+}
+.login-card h4 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+}
+.register-card {
+    max-width: 450px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    text-align: center;
+}
+.register-card h4 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+}
+.form-label {
+    text-align: left;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+.form-control {
+    border-radius: 5px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+}
+.btn-primary {
+    background-color: #007bff; /* 네이버 로그인 버튼 느낌 */
+    border-color: #007bff;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    width: 100%;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+.btn-link-custom {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin: 0 0.5rem;
+    padding: 0;
+    border: none;
+    background: none;
+}
+.btn-link-custom:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+.divider {
+    margin: 1.5rem 0;
+    position: relative;
+    text-align: center;
+}
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #e0e0e0;
+    z-index: 1;
+}
+.divider span {
+    background-color: #f0f2f5;
+    padding: 0 10px;
+    position: relative;
+    z-index: 2;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* main.css 또는 <style> 태그 내에 추가 */
+.status-icon-toggle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;  /* 아이콘 크기에 맞춰 조절 */
+    height: 50px; /* 아이콘 크기에 맞춰 조절 */
+    border-radius: 50%; /* 원형 배경 */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 약간의 입체감 */
+}
+
+.status-icon-toggle:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-1px); /* 살짝 떠오르는 효과 */
+}
+
+.status-icon-toggle:active {
+    transform: scale(0.95) translateY(0);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.dashboard-icon {
+    font-size: 5rem;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.status-icon-loading {
+    background-color: #6c757d; /* 로딩 중: 회색 배경 */
+    color: white;
+}
+
+.status-icon-active {
+    background-color: #0d6efd; /* 활성: 파란색 배경 (제공된 이미지 참고) */
+    color: white;
+}
+.status-icon-active .fa-check-circle { /* 활성 시 체크 아이콘 */
+    /* Font Awesome의 fa-check-circle 사용 예시 */
+}
+
+.status-icon-inactive {
+    background-color: #e9ecef; /* 비활성: 밝은 회색 배경 */
+    color: #495057;
+}
+.status-icon-inactive .fa-power-off { /* 비활성 시 전원 아이콘 예시 */
+    /* color: #6c757d; */
+}
+
+.status-icon-error {
+    background-color: #dc3545; /* 오류: 빨간색 배경 */
+    color: white;
+}
+.status-icon-error .fa-exclamation-triangle { /* 오류 시 경고 아이콘 예시 */
+
+}
+
+/* 아이콘 기본 트랜지션 */
+.status-icon-toggle .fas {
+    transition: transform 0.3s ease-in-out;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="globalScripts">
+  <script th:inline="javascript">
+    async function getCredentials() {
+      try {
+        const response = await fetch("/email/list", {
+          method: "GET",
+          credentials: 'include'
+        });
+        if (!response.ok) {
+          throw new Error("인증 실패");
+        }
+      } catch (err) {
+        console.error("Credentials fetch error:", err);
+      }
+    }
+
+    // 로그아웃 함수
+    async function logout() {
+      const confirmLogout = confirm("로그아웃 하시겠습니까?");
+      if (!confirmLogout) {
+        return;
+      }
+      try {
+        const response = await fetch('/api/auth/logout', {
+          method: 'POST',
+          credentials: 'include'
+        });
+        if (response.ok) {
+          document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          alert('로그아웃 되었습니다.');
+          window.location.href = '/auth/login'; // 로그인 페이지로 리다이렉트
+        } else {
+          alert('로그아웃 실패: ' + await response.text());
+        }
+      } catch (error) {
+        console.error('로그아웃 중 오류 발생:', error);
+        alert('로그아웃 중 오류가 발생했습니다.');
+      }
+    }
+
+    // userId 가져오기
+    function getUserId() {
+      const userInfo = document.getElementById('userid');
+      if (userInfo) {
+        const userIdValue = userInfo.dataset.userid;
+        console.log('Current User ID from fragment data attribute:', userIdValue);
+        return userIdValue;
+      } else {
+        console.error('#userInfoElement를 찾을 수 없습니다.');
+        return null;
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      getCredentials();
+    });
+
+  </script>
+</div>
+</body>
+</html>

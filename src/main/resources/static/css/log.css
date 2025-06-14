@@ -1,0 +1,34 @@
+.threat-log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.threat-log-header h2 {
+    margin: 0;
+}
+.table-responsive {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden; /* For border-radius to apply on table */
+}
+.table {
+    margin-bottom: 0; /* Remove default bottom margin */
+}
+.table thead th {
+    background-color: #f8f9fa;
+    border-bottom-width: 1px;
+    font-weight: 600;
+}
+.table td, .table th {
+    vertical-align: middle;
+}
+.badge {
+    font-size: 0.8rem;
+    padding: 0.4em 0.7em;
+}
+.loading-row, .empty-row {
+    text-align: center;
+    color: #6c757d;
+    height: 200px;
+}

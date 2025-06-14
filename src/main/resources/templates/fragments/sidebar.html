@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Sidebar Fragment</title>
+</head>
+<body>
+
+<div class="sidebar" th:fragment="sidebar">
+  <div>
+    <div class="sidebar-header" th:data-userid="${userId}" id="userid">
+      Improve Email
+    </div>
+    <nav class="sidebar-menu">
+      <ul>
+        <li><a href="/email/list"><i class="fas fa-home"></i> 홈</a></li>
+        <li><a href="/email/log"><i class="fas fa-user-circle"></i> Log</a></li>
+        <li><a href="/email/setting"><i class="fas fa-cog"></i> 설정</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="sidebar-footer">
+    <a href="/auth/logout" id="logoutBtn"><i class="fas fa-sign-out-alt" style="margin-right: 3px"></i>   로그아웃</a>
+  </div>
+</div>
+
+</body>
+</html>
