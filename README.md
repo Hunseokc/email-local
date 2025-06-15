@@ -2,6 +2,7 @@
 
 ## 사전 준비
 * [Docker](https://www.docker.com/products/docker-desktop/) 설치
+* [Thunderbird](https://www.thunderbird.net/ko/) 설치
 * Java 17 설치
 
 ## 실행 순서
@@ -24,6 +25,13 @@
 
 4. **접속 확인**
     * 웹 브라우저에서 `http://localhost:8080`으로 접속하여 애플리케이션을 확인합니다.
+
+## 실제 위협 URL 전송 테스트를 원하는 경우
+1. **Thunderbird 메일 클라이언트 설치**
+   * 테스트용 메일 서버의 메일 계정 등록
+     * 통상 사용되는 메일로 수신 / 발신 시 메일이 차단될 수 있습니다
+2. ****
+   * testreceive@dorazi02sev.shop
 
 ## 라이브 데모
 * 실제 배포된 서비스는 [http://your-ec2-address.com](http://your-ec2-address.com) 에서 확인하실 수 있습니다.
