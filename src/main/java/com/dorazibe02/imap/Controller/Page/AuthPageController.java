@@ -16,4 +16,9 @@ public class AuthPageController {
     public String registerPage() {
         return "register.html";
     }
+
+    @GetMapping("/pw-reset")
+    public String pwResetPage() {
+        return "pw-reset.html";
+    }
 }
