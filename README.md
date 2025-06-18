@@ -32,12 +32,12 @@
         * 통상 사용되는 메일로 수신 / 발신 시 메일이 차단될 수 있습니다
 
 2. **테스트용 메일 추가**
-    * 발신용 메일
+    * 발신용 메일 (testreceive@dorazi02sev.shop)
         * ![Image](https://github.com/user-attachments/assets/82b34026-1581-4272-9f5e-5f5d71fec28a)
 
 
-* 수신용 메일
-    * ![Image](https://github.com/user-attachments/assets/43ff2741-28eb-4f0a-b8ca-eb68b2b63a19)
+* 수신용 메일 (testemail@dorazi02sev.shop)
+    * ![Image](https://github.com/user-attachments/assets/d1da3edd-6ff6-4a66-9543-4fe5d10a5b43)
 
 
 * 애플리케이션에서 메일을 등록하고, Thunderbird 발신용 메일에서 수신용 메일에 위협 메일을 보내 테스트합니다
