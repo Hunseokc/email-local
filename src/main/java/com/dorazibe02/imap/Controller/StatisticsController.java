@@ -1,8 +1,9 @@
 package com.dorazibe02.imap.Controller;
 
-import com.dorazibe02.imap.UnSafeEmail.LogService;
 import com.dorazibe02.imap.Config.RedisConfig;
 import com.dorazibe02.imap.Member.MemberService;
+import com.dorazibe02.imap.UnSafeEmail.LogService;
+import com.dorazibe02.imap.UnSafeEmail.UnSafeEmail;
 import com.dorazibe02.imap.UnSafeEmail.UnSafeEmailDto;
 import com.dorazibe02.imap.User.CustomUserDetail;
 import lombok.RequiredArgsConstructor;

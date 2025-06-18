@@ -1,35 +1,12 @@
 spring:
   # .env import
+  profiles:
+    active: prod
   config:
     import: optional:file:.env[.properties]
-  datasource:
-    hikari:
-      maximum-pool-size: 4
-      minimum-idle: 0
-      connection-timeout: 30000
-      idle-timeout: 10000
-      max-lifetime: 180000
-    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/mydb
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    driver-class-name: org.postgresql.Driver
-  data:
-    redis:
-      host: ${REDIS_HOST}
-      port: ${REDIS_PORT}
-      password: ${REDIS_PASSWORD}
-  jpa:
-    show-sql: true
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update
   security:
     jwt:
-      secret: ${JWT_SECRET}
       expiration-ms: 600000  # 10분
-    encryption:
-      key: ${ENCRYPTION_KEY}
-      vector: ${INIT_VECTOR}
   mail:
     imap:
       host: imap.naver.com
@@ -49,7 +26,5 @@ mail-settings:
     dorazi02sev.shop: mail.dorazi02sev.shop
     outlook.com: outlook.office365.com
     office365.com: outlook.office365.com
-api-keys:
-  google: ${GOOGLE_API_KEY}
-  openai: ${OPENAI_API_KEY}
-  virustotal: ${VIRUSTOTAL_API_KEY}
+api-limiting:
+  daily-limit: 20

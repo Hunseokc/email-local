@@ -1,5 +1,6 @@
 package com.dorazibe02.imap;
 
+import com.dorazibe02.imap.Vault.AuthCustomRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,6 +15,7 @@ import java.util.Base64;
 @RequiredArgsConstructor
 public class CryptoUtil {
 
+    private final AuthCustomRepository authCustomRepository;
     @Value("${spring.security.encryption.key}")
     private String encryptionKey;
 

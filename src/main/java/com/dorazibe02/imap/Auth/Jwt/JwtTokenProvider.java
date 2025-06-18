@@ -1,6 +1,7 @@
 package com.dorazibe02.imap.Auth.Jwt;
 
 import com.dorazibe02.imap.User.CustomUserDetail;
+import com.dorazibe02.imap.Vault.AuthCustomRepository;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -25,6 +26,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class JwtTokenProvider {
 
+    private final AuthCustomRepository authCustomRepository;
+
     @Value("${spring.security.jwt.expiration-ms}")
     private long expirationMs;
 
@@ -44,6 +47,7 @@ public class JwtTokenProvider {
             throw new RuntimeException("Failed to load JWT Secret.", e);
         }
     }
+
 
     public TokenInfoDto generateToken(Authentication authentication) {
 

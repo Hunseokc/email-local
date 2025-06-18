@@ -1,9 +1,9 @@
 package com.dorazibe02.imap.SafeUrl;
 
+import com.dorazibe02.imap.Notion.NotionService;
 import com.dorazibe02.imap.SafeUrl.Dto.SingleUrlAnalysisResult;
 import com.dorazibe02.imap.SafeUrl.Dto.UrlAnalysisResult;
 import com.dorazibe02.imap.SafeUrl.Gpt.GptThreatSummaryService;
-import com.dorazibe02.imap.Notion.NotionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Async;

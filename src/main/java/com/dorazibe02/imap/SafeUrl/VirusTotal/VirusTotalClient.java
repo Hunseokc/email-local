@@ -1,5 +1,6 @@
 package com.dorazibe02.imap.SafeUrl.VirusTotal;
 
+import com.dorazibe02.imap.Vault.AuthCustomRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
@@ -33,6 +34,7 @@ public class VirusTotalClient {
             throw new RuntimeException("VirusTotal API Key loading failed.", e);
         }
     }
+
 
     public JsonNode requestUrlScan(String url) {
         RequestBody body = new FormBody.Builder()

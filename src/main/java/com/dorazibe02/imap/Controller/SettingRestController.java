@@ -1,9 +1,9 @@
 package com.dorazibe02.imap.Controller;
 
+import com.dorazibe02.imap.Notion.NotionQueryService;
 import com.dorazibe02.imap.Redis.RedisCacheService;
 import com.dorazibe02.imap.Setting.SettingFeature;
 import com.dorazibe02.imap.Setting.ThreatAction;
-import com.dorazibe02.imap.Notion.NotionQueryService;
 import com.dorazibe02.imap.User.CustomUserDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

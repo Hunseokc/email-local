@@ -2,8 +2,10 @@ package com.dorazibe02.imap.SafeUrl.Gpt;
 
 import com.dorazibe02.imap.RateLimitException;
 import com.dorazibe02.imap.Redis.RedisCacheService;
+import com.dorazibe02.imap.Vault.AuthCustomRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,9 +46,9 @@ public class GptClient {
                     .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + apiKey)
                     .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                     .build();
-            System.out.println("OpenAI API Key and WebClient loaded from properties successfully.");
+            log.info("OpenAI API Key and WebClient loaded from properties successfully.");
         } catch (Exception e) {
-            System.err.println("Failed to load OpenAI API Key from Supabase Vault: " + e.getMessage());
+            log.error("Failed to load OpenAI API Key from Supabase Vault: {}", e.getMessage());
             throw new RuntimeException("OpenAI API Key loading failed.", e);
         }
     }

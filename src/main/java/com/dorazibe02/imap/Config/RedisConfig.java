@@ -8,7 +8,6 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.springframework.util.StringUtils;
 
 @Configuration
 public class RedisConfig {
@@ -26,9 +25,8 @@ public class RedisConfig {
         RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
         config.setHostName(host);
         config.setPort(port);
-        if (StringUtils.hasText(password)) {
-            config.setPassword(password);
-        }
+        config.setPassword(password);
+        config.setUsername("default");
         return new LettuceConnectionFactory(config);
     }
 

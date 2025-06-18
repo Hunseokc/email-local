@@ -1,7 +1,9 @@
 package com.dorazibe02.imap.Email;
 
+import com.dorazibe02.imap.Auth.AuthRepository;
 import com.dorazibe02.imap.Notion.NotionQueryService;
 import com.dorazibe02.imap.Redis.RedisCacheService;
+import com.dorazibe02.imap.UnSafeEmail.UnSafeEmailRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.TaskScheduler;
@@ -9,6 +11,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -19,6 +23,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 @RequiredArgsConstructor
 public class PollingScheduler {
+
+    private final UnSafeEmailRepository unSafeEmailRepository;
 
     private final EmailService emailService;
     private final NotionQueryService notionQueryService;
@@ -73,6 +79,20 @@ public class PollingScheduler {
         Instant nextExecutionTime = Instant.now().plusMillis(DELAY_BETWEEN_USERS_MS); // 시작 시점 딜레이
         taskScheduler.schedule(task, nextExecutionTime);
         log.info("Scheduled next poll for user index {} at {}", currentIndex.get(), nextExecutionTime);
+    }
+
+    @Scheduled(cron = "0 0 0 * * *") // 매일 0시 0분에 실행
+    public void cleanupOldThreatLogs() {
+        log.info("오래된 위협 로그 삭제 작업");
+        try {
+            ZonedDateTime sevenDaysAgo = ZonedDateTime.now().minusDays(7);
+            String cutoffDate = sevenDaysAgo.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+
+            unSafeEmailRepository.deleteOlderThan(cutoffDate);
+            log.info("7일 이상 경과된 위협 로그를 성공적으로 삭제했습니다.");
+        } catch (Exception e) {
+            log.error("오래된 위협 로그 삭제 중 오류가 발생했습니다.", e);
+        }
     }
 
     @Scheduled(fixedRate = 3600000) // 1시간 간격으로 Notion 'Waiting' 이메일 재처리

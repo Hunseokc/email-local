@@ -1,6 +1,5 @@
 package com.dorazibe02.imap.Controller;
 
-import com.dorazibe02.imap.Email.EmailService;
 import com.dorazibe02.imap.Auth.Auth;
 import com.dorazibe02.imap.Auth.AuthService;
 import com.dorazibe02.imap.Auth.Jwt.TokenInfoDto;
@@ -9,6 +8,7 @@ import com.dorazibe02.imap.Member.Member;
 import com.dorazibe02.imap.Member.MemberRepository;
 import com.dorazibe02.imap.Member.MemberService;
 import com.dorazibe02.imap.Auth.UserAuthCredentialService;
+import com.dorazibe02.imap.Email.EmailService;
 import com.dorazibe02.imap.User.CustomUserDetail;
 import jakarta.mail.AuthenticationFailedException;
 import jakarta.mail.Session;

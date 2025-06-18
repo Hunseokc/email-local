@@ -1,11 +1,12 @@
 package com.dorazibe02.imap.Email;
 
-import com.dorazibe02.imap.Redis.RedisCacheService;
-import com.dorazibe02.imap.SafeUrl.Dto.UrlAnalysisRequest;
 import com.dorazibe02.imap.Auth.Auth;
 import com.dorazibe02.imap.Auth.UserAuthCredentialService;
+import com.dorazibe02.imap.Redis.RedisCacheService;
 import com.dorazibe02.imap.Notion.EmailMessage;
 import com.dorazibe02.imap.Notion.NotionService;
+import com.dorazibe02.imap.SafeUrl.Dto.UrlAnalysisRequest;
+import com.dorazibe02.imap.SafeUrl.Heuristic.HeuristicAnalysisService;
 import com.dorazibe02.imap.Setting.SettingFeature;
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;

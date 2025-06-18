@@ -180,6 +180,9 @@
                     <button type="button" class="btn btn-outline-secondary me-auto" id="testNotionInModalBtn">
                         <i class="fas fa-vial"></i> 테스트
                     </button>
+                    <button type="button" class="btn btn-outline-danger" id="deleteNotionBtn">
+                        <i class="fas fa-trash-alt me-2"></i>연동 삭제
+                    </button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
                     <button type="button" class="btn btn-primary" id="saveNotionChangesBtn">변경 저장</button>
                 </div>
@@ -234,6 +237,36 @@
                     resetUidBtn.innerHTML = '<i class="fas fa-eraser me-2"></i>메일 UID 초기화';
                 }
             });
+
+            const deleteNotionBtn = document.getElementById('deleteNotionBtn');
+            if (deleteNotionBtn) {
+                deleteNotionBtn.addEventListener('click', async () => {
+                    const isConfirmed = confirm('정말로 Notion 연동을 삭제하시겠습니까?\n이후 이메일은 Notion에 더 이상 기록되지 않습니다.');
+
+                    if (!isConfirmed) {
+                        return;
+                    }
+
+                    try {
+                        const response = await fetch('/api/notion/delete-user', {
+                            method: 'DELETE',
+                            credentials: 'include' // 인증 쿠키 전송
+                        });
+
+                        if (response.ok) {
+                            alert('Notion 연동 정보가 성공적으로 삭제되었습니다.');
+                            // 변경사항을 UI에 즉시 반영하기 위해 페이지를 새로고침합니다.
+                            window.location.reload();
+                        } else {
+                            const errorText = await response.text();
+                            throw new Error(errorText || '연동 정보 삭제에 실패했습니다.');
+                        }
+                    } catch (error) {
+                        console.error('Error deleting Notion integration:', error);
+                        alert('오류가 발생했습니다: ' + error.message);
+                    }
+                });
+            }
 
             document.getElementById('logoutBtn').addEventListener('click', logout);
         });

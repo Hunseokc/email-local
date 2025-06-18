@@ -60,6 +60,7 @@ public class UrlAnalysisConsumer {
     @Async("taskExecutor")
     public void consumeAsync(UrlAnalysisRequest request) throws Exception {
         long userId = request.getUserId();
+
         boolean notionSaveEnable = notionQueryService.isConnect(userId);
 
         List<String> allUrls = request.getUrls();

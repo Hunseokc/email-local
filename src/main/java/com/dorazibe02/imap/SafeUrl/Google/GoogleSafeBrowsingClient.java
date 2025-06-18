@@ -19,7 +19,6 @@ public class GoogleSafeBrowsingClient {
 
     private static final Logger log = LoggerFactory.getLogger(GoogleSafeBrowsingClient.class);
 
-
     @Value("${api-keys.google}")
     private String apiKey;
 

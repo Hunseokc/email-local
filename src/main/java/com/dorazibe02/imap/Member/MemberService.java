@@ -3,10 +3,11 @@ package com.dorazibe02.imap.Member;
 import com.dorazibe02.imap.Auth.Auth;
 import com.dorazibe02.imap.Auth.AuthRepository;
 import com.dorazibe02.imap.Notion.NotionEntityService;
+import com.dorazibe02.imap.Redis.TokenRedisService;
 import com.dorazibe02.imap.Setting.ThreatAction;
 import com.dorazibe02.imap.Setting.UserSetting;
 import com.dorazibe02.imap.Setting.UserSettingRepository;
-import com.dorazibe02.imap.Redis.TokenRedisService;
+import com.dorazibe02.imap.UnSafeEmail.UnSafeEmailRepository;
 import com.dorazibe02.imap.User.CustomUserDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -23,6 +24,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final AuthRepository authRepository;
     private final UserSettingRepository userSettingRepository;
+    private final UnSafeEmailRepository unSafeEmailRepository;
 
     private final TokenRedisService tokenRedisService;
     private final NotionEntityService notionEntityService;
@@ -64,18 +66,20 @@ public class MemberService {
         // 1. Notion 연동 정보 삭제 (Notion 엔티티는 userId로 Auth.id를 사용)
         notionEntityService.deleteNotionDataByAuthId(userId);
 
-        // 2. UserSetting 삭제
+        // 2. UserSetting 정보 삭제
         userSettingRepository.findByAuthId(userId).ifPresent(userSettingRepository::delete);
 
-        // 3. Member 정보 삭제 (Member : Auth = 1:1 관계 => authId 조회)
+        // 3. UnSafeEmail 로그 정보 삭제
+        unSafeEmailRepository.deleteByAuthId(userId);
+
+        // 4. Member 정보 삭제 (Member : Auth = 1:1 관계 => authId 조회)
         memberRepository.findByAuthId(userId).ifPresent(member -> {
             // Member 삭제하기 전에 Redis 토큰 있으면 삭제
             tokenRedisService.revokeToken(member.getEmail());
             memberRepository.delete(member);
         });
 
-
-        // 4. Auth 정보 삭제
+        // 5. Auth 정보 삭제
         authRepository.findById(userId).ifPresent(authRepository::delete);
 
         System.out.println("User ID " + userId + " 사용자의 모든 관련 정보가 삭제되었습니다.");

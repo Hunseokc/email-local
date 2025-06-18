@@ -1,7 +1,7 @@
 package com.dorazibe02.imap.SafeUrl.Google;
 
-import com.dorazibe02.imap.SafeUrl.Dto.UrlAnalysisResult;
 import com.dorazibe02.imap.SafeUrl.Dto.SingleUrlAnalysisResult;
+import com.dorazibe02.imap.SafeUrl.Dto.UrlAnalysisResult;
 import com.dorazibe02.imap.SafeUrl.UrlScanService;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;

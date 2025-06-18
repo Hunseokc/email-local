@@ -4,9 +4,9 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-#.env.example
+.env
 
-### STS ###
+### STS jNS30tdsoRUN6M5r###
 .apt_generated
 .classpath
 .factorypath

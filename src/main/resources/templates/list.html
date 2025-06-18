@@ -39,13 +39,13 @@
                         <li class="d-flex justify-content-between align-items-center mb-2">
                             <span>URL 위험성 AI 검증</span>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="urlAnalysisToggle" checked>
+                                <input class="form-check-input" type="checkbox" id="urlAnalysisToggle">
                             </div>
                         </li>
                         <li class="d-flex justify-content-between align-items-center mb-2">
                             <span>Notion 기록</span>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="notionIntegrationToggle" checked>
+                                <input class="form-check-input" type="checkbox" id="notionIntegrationToggle">
                             </div>
                         </li>
                     </ul>
@@ -236,7 +236,7 @@
                     throw new Error("Notion 연동 상태 확인 실패");
                 }
                 const data = await res.json();
-                const isNotionEnabled = data.isActive;
+                const isNotionEnabled = data.isEnabled;
                 updateNotionUI(isNotionEnabled);
             } catch (e) {
                 console.error("Error checking Notion status:", e);

@@ -48,15 +48,20 @@ public class GptThreatSummaryService {
         // 프롬프트 영어 사용 시 토큰 사용량 저렴
         String prompt = String.format(
                 """
-                You are a senior cybersecurity analyst AI. Your task is to assess the threat level of a URL based on a summary from VirusTotal.
-                Analyze the following data. Pay close attention to the reputation and reliability of the specific security vendors that flagged the URL as malicious or suspicious. 
-                For example, detections from well-known vendors like Google, Kaspersky, or BitDefender should be weighted more heavily than detections from obscure vendors.
+                You are a senior cybersecurity analyst AI. 
+                Your task is to assess the threat level of a URL based on a summary from VirusTotal.
+                Analyze the following data. Pay close attention to the reputation 
+                and reliability of the specific security vendors that flagged 
+                the URL as malicious or suspicious. 
+                For example, detections from well-known vendors like Google, 
+                Kaspersky, or BitDefender should be weighted more heavily than detections from obscure vendors.
     
                 Based on your analysis, provide a response STRICTLY in the following JSON format:
                 {
                     "Tag": "PHISHING",
                     "ThreatScore": 95,
-                    "Content": "This URL was detected as phishing by several reputable engines, including Google SafeBrowse and BitDefender. Access is highly discouraged."
+                    "Content": "This URL was detected as phishing by several reputable engines, 
+                    including Google SafeBrowse and BitDefender. Access is highly discouraged."
                 }
     
                 Here is the data to analyze:
